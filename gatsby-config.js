@@ -1,10 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby-TS-MDX-PrismJs-Starter',
+    title: 'Huh',
     description: 'Gatsby-TS-MDX-PrismJs-Starter',
-    keywords: 'One keyword, two keywords',
+    keywords: 'One keyword, two keywords',// @todo: keywords for seo
   },
   plugins: [
+	  `gatsby-plugin-postcss`,
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',

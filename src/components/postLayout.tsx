@@ -1,7 +1,7 @@
 import { RouterProps } from '@reach/router';
 import * as React from 'react';
 import { PostQueryData } from '../interfaces/PostQuery.interface';
-import Layout from './layout';
+import Page from './page';
 
 type PostLayoutProps = PostQueryData & RouterProps;
 
@@ -17,11 +17,11 @@ const PostLayout: React.FunctionComponent<PostLayoutProps> = ({
   const { location, children } = props;
 
   return (
-    <Layout location={location}>
+    <Page location={location}>
       <h1>{title}</h1>
       <em>{date}</em>
       {children}
-    </Layout>
+    </Page>
   );
 };
 
