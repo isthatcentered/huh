@@ -12,8 +12,6 @@ exports.createPages = async ({ graphql, actions }) => {
             fileAbsolutePath
             frontmatter {
               path
-              title
-              date
             }
           }
         }

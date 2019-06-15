@@ -20,7 +20,7 @@ module.exports = {
 			options: {
 				decks: [],
 				defaultLayouts: {
-					default: require.resolve( "./src/components/postLayout.tsx" ),
+					default: require.resolve( "./src/components/Post.tsx" ),
 				},
 				extensions: [ ".mdx", ".md" ],
 				gatsbyRemarkPlugins: [

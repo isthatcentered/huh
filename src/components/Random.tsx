@@ -33,7 +33,7 @@ export function AppHeader( { title, ...props }: { title: string } & HTMLAttribut
 	const NavItem = ( { name }: { name: string } ) => (
 		<li className="inline p-2">
 			<Link className="capitalize text-purple-700 underline"
-			      to={`/${name}`}
+			      to={`/`}
 			>
 				{name}
 			</Link>
