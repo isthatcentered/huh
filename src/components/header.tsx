@@ -1,14 +1,38 @@
-import { Link } from "gatsby"
-import { useLayoutQuery } from "../hooks/useLayoutQuery"
-import * as React from "react"
-import { HTMLAttributes } from "react"
+import { graphql, Link, useStaticQuery } from "gatsby"
+import PropTypes from "prop-types"
+import React, { HTMLAttributes } from "react"
 
 
+
+
+const Header = ( { siteTitle }: { siteTitle: string } ) => (
+	<header>
+		<AppLogo/>
+	</header>
+)
+
+Header.propTypes = {
+	siteTitle: PropTypes.string,
+}
+
+Header.defaultProps = {
+	siteTitle: ``,
+}
+
+export default Header
 
 
 export function AppLogo( { ...props }: {} & HTMLAttributes<HTMLDivElement> )
 {
-	const { site: { siteMetadata: { title } } } = useLayoutQuery()
+	const { site: { siteMetadata: { title } } } = useStaticQuery( graphql`
+		query {
+			site {
+				siteMetadata {
+					title
+				}
+			}
+		}
+	` )
 	
 	return (
 		<div
@@ -24,10 +48,8 @@ export function AppLogo( { ...props }: {} & HTMLAttributes<HTMLDivElement> )
 		</div>)
 }
 
-
-export function AppHeader( { title, ...props }: { title: string } & HTMLAttributes<HTMLDivElement> )
+export function AppHeader( { ...props }: { } & HTMLAttributes<HTMLDivElement> )
 {
-	
 	const navItems = [ "posts" ] // @todo: fetch them from pages folder
 	
 	const NavItem = ( { name }: { name: string } ) => (

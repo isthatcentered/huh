@@ -1,43 +1,60 @@
-import { RouterProps } from "@reach/router";
-import * as React from "react";
-import Page from "../components/page"
-import { useListingQuery } from "../hooks/useListingQuery"
-import { Link } from "gatsby"
+import React from "react"
+import { graphql, Link } from "gatsby"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import { PostsListQuery } from "../__graphqlTypes"
 
 
 
 
-/**
- * @todo: netlify cms mdx
- * @todo: Add tags to post template
- * @todo: Add sitemap
- * @todo: Add json ld data
- * @tood: Add analytics
- * @todo: deploy
- */
-function IndexPage( { location }: RouterProps )
+function IndexPage( { data: { allMarkdownRemark } }: { data: PostsListQuery } )
 {
-	const { allMdx } = useListingQuery(),
-	      posts      = allMdx && allMdx.edges && allMdx.edges
-	
+	const posts = allMarkdownRemark!.edges.map( post => ({
+		title: post.node.frontmatter!.title!,
+		date:  post.node.frontmatter!.date!,
+	}) )
 	
 	return (
-		<Page location={location}>
+		<Layout>
+			<SEO title="Home"/>
 			<ul>
-				{posts && posts.map( ( { node } ) => {
-					const { path, title, date } = node.frontmatter
-					
-					return (
-						<li key={path}>
-							<Link to={`/posts${path}`}>
-								<h2 className="">{title}</h2>
-								<p className="text-xs text-gray-500">{date}</p>
-							</Link>
-						</li>)
-				} )}
+				{posts.map( ( { date, title } ) => (
+					<li key={title}>
+						<Link to={`/posts/${title}`}>
+							<h2 className="">{title}</h2>
+							<p className="text-xs text-gray-500">{date}</p>
+						</Link>
+					</li>) )}
 			</ul>
-		</Page>)
+		</Layout>
+	)
 }
 
 
-export default IndexPage;
+export const PostLinkFragment = graphql`
+	fragment  postLinkFragment on MarkdownRemarkConnection {
+		edges {
+			node {
+				frontmatter {
+					title
+					date(fromNow: true)
+				}
+				headings {
+					value
+					depth
+				}
+			}
+		}
+	}
+`
+
+export const query = graphql`
+	query PostsList ($max: Int = 10){
+		allMarkdownRemark(limit: $max) {
+			...postLinkFragment
+		}
+	}
+`
+
+
+export default IndexPage

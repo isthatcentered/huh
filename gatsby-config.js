@@ -1,75 +1,44 @@
 module.exports = {
 	siteMetadata: {
-		title: "Hello world",
-		description: "Gatsby-TS-MDX-PrismJs-Starter",
-		keywords: "One keyword, two keywords",// @todo: keywords for seo
+		title: `Huh`,
+		description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+		author: `@gatsbyjs`, // @todo: fill metas for seo
 	},
 	plugins: [
-		{
-			resolve: `gatsby-plugin-netlify-cms`,
-			options: {
-				modulePath: `${__dirname}/src/cms/cms.js`,
-			},
-		},
 		`gatsby-plugin-postcss`,
-		"gatsby-plugin-react-helmet",
-		"gatsby-transformer-sharp",
-		"gatsby-plugin-sharp",
-		"gatsby-plugin-typescript",
-		"gatsby-transformer-remark",
-		"gatsby-image",
-		"gatsby-plugin-styled-components",
-		"gatsby-plugin-offline",
+		`gatsby-plugin-typescript`,
+		`gatsby-plugin-react-helmet`,
+		`gatsby-transformer-sharp`,
+		`gatsby-plugin-sharp`,
+		`gatsby-transformer-remark`,
 		{
-			resolve: `gatsby-mdx`,
+			resolve: `gatsby-source-filesystem`,
 			options: {
-				decks: [],
-				defaultLayouts: {
-					default: require.resolve( "./src/components/Post.tsx" ),
-				},
-				extensions: [ ".mdx", ".md" ],
-				gatsbyRemarkPlugins: [
-					{
-						resolve: "gatsby-remark-prismjs",
-						options: {
-							classPrefix: "language-",
-							inlineCodeMarker: {
-								tsx: "tsx",
-							},
-							aliases: {},
-						},
-					},
-				],
-			},
-		},
-		{
-			resolve: "gatsby-source-filesystem",
-			options: {
-				name: "posts",
-				path: `${__dirname}/src/posts`,
-				ignore: [ "**/.tsx*" ],
-			},
-		},
-		{
-			resolve: "gatsby-source-filesystem",
-			options: {
-				name: "images",
+				name: `images`,
 				path: `${__dirname}/src/images`,
 			},
 		},
-		// {
-		//   resolve: `gatsby-plugin-manifest`,
-		//   options: {
-		//     name: "Gatsby-TS-MDX-PrismJs-Starter",
-		//     short_name: 'Gatsby-Starter',
-		//     start_url: '/',
-		//     background_color: '#663399',
-		//     theme_color: '#663399',
-		//     display: 'minimal-ui',
-		// icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
-		// },
-		// },
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `markdown`,
+				path: `${__dirname}/src/posts`,
+			},
+		},
+		{
+			resolve: `gatsby-plugin-manifest`,
+			options: {
+				name: `gatsby-starter-default`,
+				short_name: `starter`,
+				start_url: `/`,
+				background_color: `#663399`,
+				theme_color: `#663399`,
+				display: `minimal-ui`,
+				icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+			},
+		},
 		// this (optional) plugin enables Progressive Web App + Offline functionality
-		// To learn more, visit: https://gatsby.app/offline
+		// To learn more, visit: https://gatsby.dev/offline
+		// `gatsby-plugin-offline`,
 	],
 }

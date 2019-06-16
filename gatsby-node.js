@@ -1,31 +1,7 @@
-const componentWithMDXScope = require('gatsby-mdx/component-with-mdx-scope');
-const { resolve } = require('path');
+/**
+ * Implement Gatsby's Node APIs in this file.
+ *
+ * See: https://www.gatsbyjs.org/docs/node-apis/
+ */
 
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions;
-
-  const { data } = await graphql(`
-    {
-      allMdx(limit: 5, sort: { fields: [frontmatter___date], order: DESC }) {
-        edges {
-          node {
-            fileAbsolutePath
-            frontmatter {
-              path
-            }
-          }
-        }
-      }
-    }
-  `).catch(error => console.error(error));
-
-  data.allMdx.edges.forEach(({ node }) => {
-    createPage({
-      path: `/posts${node.frontmatter.path}`,
-      component: node.fileAbsolutePath,
-      context: {
-        pagePath: node.frontmatter.path,
-      },
-    });
-  });
-};
+// You can delete this file if you're not using it
