@@ -7,6 +7,14 @@ import { Link } from "gatsby"
 
 
 
+/**
+ * @todo: netlify cms mdx
+ * @todo: Add tags to post template
+ * @todo: Add sitemap
+ * @todo: Add json ld data
+ * @tood: Add analytics
+ * @todo: deploy
+ */
 function IndexPage( { location }: RouterProps )
 {
 	const { allMdx } = useListingQuery(),
