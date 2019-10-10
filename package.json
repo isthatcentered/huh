@@ -28,7 +28,7 @@
         "@types/react": "^16.8.20",
         "@types/react-dom": "^16.8.4",
         "@types/react-helmet": "^5.0.8",
-        "gatsby-plugin-postcss": "^2.0.7",
+        "gatsby-plugin-postcss": "^2.1.11",
         "gatsby-plugin-typescript": "^2.0.15",
         "gatsby-transformer-remark": "^2.4.0",
         "graphql": "^14.3.1",
