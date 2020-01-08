@@ -20,7 +20,7 @@
         "react-helmet": "^5.2.1"
     },
     "devDependencies": {
-        "@graphql-codegen/cli": "^1.2.1",
+        "@graphql-codegen/cli": "^1.11.0",
         "@graphql-codegen/typescript": "^1.2.1",
         "@graphql-codegen/typescript-graphql-files-modules": "1.2.1",
         "@graphql-codegen/typescript-operations": "^1.2.1",
